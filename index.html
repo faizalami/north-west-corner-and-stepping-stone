@@ -130,6 +130,7 @@
 			// perhitungan NWC
 			$('#next').click(function(event) {
 				event.preventDefault();
+				$('.x, .blank').removeClass('yellow');
 				
 				// jika step masih 0
 				if(step == 0){
@@ -218,10 +219,6 @@
 										sisa -= x;
 										data[i][j].x = x;
 										data[i][j].temp = x;
-
-										$('.x, .blank').removeClass('yellow');
-										$('#x-'+(i+1)+'-'+(j+1)+', #blank-'+(i+1)+'-'+(j+1)).addClass('yellow');
-										$('#x-'+(i+1)+'-'+(j+1)).html(x);
 									}
 									// ini kalo supply >= demand
 									else {
@@ -231,11 +228,12 @@
 										sisa -= x;
 										data[i][j].x = x;
 										data[i][j].temp = x;
-
-										$('#x-'+(i+1)+'-'+(j+1)).html(x);
-										$('#x-'+(i+1)+'-'+(j+1)+', #blank-'+(i+1)+'-'+(j+1)).addClass('yellow');
-										$('#x-'+(i+1)+'-'+(j+1)).html(x);
 									}
+
+									// tampikan di tabel
+									$('#x-'+(i+1)+'-'+(j+1)+', #blank-'+(i+1)+'-'+(j+1)).addClass('yellow');
+									$('#x-'+(i+1)+'-'+(j+1)).html(x);
+
 									stepRow = i;
 									stepCol = j;
 									breakLoop = true;

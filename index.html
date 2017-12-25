@@ -203,11 +203,14 @@
 				else {
 					// jika variabel sisa != 0 maka lanjut perhitungan
 					if(sisa != 0) {
+						// breakloop ini supaya bisa nampilkan step by step
 						var breakLoop = false;
 						for (var i = stepRow; i < jmlSupply; i++) {
 							for (var j = stepCol; j < jmlDemand; j++) {
 								if(supply[i].sisa != 0 && demand[j].sisa != 0) {
 									var x = 0;
+									// bandingkan sisa supply sama demand
+									// kalo supply lebih kecil, masukkan ke tabel
 									if(supply[i].sisa < demand[j].sisa) {
 										x = supply[i].sisa;
 										supply[i].sisa -= x;
@@ -216,8 +219,11 @@
 										data[i][j].x = x;
 										data[i][j].temp = x;
 
+										$('.x, .blank').removeClass('yellow');
+										$('#x-'+(i+1)+'-'+(j+1)+', #blank-'+(i+1)+'-'+(j+1)).addClass('yellow');
 										$('#x-'+(i+1)+'-'+(j+1)).html(x);
 									}
+									// ini kalo supply >= demand
 									else {
 										x = demand[j].sisa;
 										supply[i].sisa -= x;
@@ -227,17 +233,21 @@
 										data[i][j].temp = x;
 
 										$('#x-'+(i+1)+'-'+(j+1)).html(x);
+										$('#x-'+(i+1)+'-'+(j+1)+', #blank-'+(i+1)+'-'+(j+1)).addClass('yellow');
+										$('#x-'+(i+1)+'-'+(j+1)).html(x);
 									}
 									stepRow = i;
 									stepCol = j;
 									breakLoop = true;
 								}
 
+								// kalo breakloopnya true, looping berhenti, nanti lanjut kalau dipencet next lagi
 								if(breakLoop) {
 									break;
 								}
 							}
 
+							// kalo breakloopnya true, looping berhenti, nanti lanjut kalau dipencet next lagi
 							if(breakLoop) {
 								break;
 							}

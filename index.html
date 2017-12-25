@@ -86,6 +86,19 @@
 			$('#init').click(function(event) {
 				event.preventDefault();
 
+				step = 0;
+				steppingStone = 0;
+				supply = [];
+				demand = []; 
+				data = [];
+				stepRow = 0;
+				stepCol = 0;
+				total = 0;
+				sisa = 0;
+
+				$('#stepping-stone, #hasil-nwc, #hasil-ss').fadeOut(500);
+				$('#next').html('Hitung').fadeIn(500);
+
 				jmlSupply = parseInt($('#jml-supply').val());
 				jmlDemand = parseInt($('#jml-demand').val());
 

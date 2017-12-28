@@ -41,39 +41,39 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-	<h2>Inisialisasi Tabel NWC</h2>
-	
-	<table class="table table-striped table-bordered" cellspacing="0" width="100%">
-		<tr>
-			<td>Jumlah Supply</td>
-			<td>Jumlah Demand</td>
-		</tr>
-		<tr>
-			<td><input class="form-control form-control-sm" type="number" min="0" name="jml-supply" id="jml-supply" placeholder="jumlah supply"></td>
-			<td><input class="form-control form-control-sm" type="number" min="0" name="jml-demand" id="jml-demand" placeholder="jumlah demand"></td>
-		</tr>
-		<tr>
-			<td colspan="3"><button type="button" id="init" class="btn btn-success">Buat Tabel NWC</button></td>
-		</tr>
-	</table>
-</div>
-<div class="col-md-6">
-	<div class="hidden1" id="tbl-nwc-container">
-		<h2>Tabel NWC</h2>
-		<table class="table table-striped table-bordered" cellspacing="0" width="100%">
-			<tbody id="tbl-nwc"></tbody>
-			<tfoot>
-				<tr>
-					<td id="buttons">
-						<button type="button" id="next" class="btn btn-primary">Hitung</button> <button type="button" id="stepping-stone" class="hidden1 btn btn-danger">Stepping Stone</button>
-					</td>
-				</tr>
-			</tfoot>
-		</table>
-	</div>
+				<h2>Inisialisasi Tabel NWC</h2>
+				
+				<table class="table table-striped table-bordered" cellspacing="0" width="100%">
+					<tr>
+						<td>Jumlah Supply</td>
+						<td>Jumlah Demand</td>
+					</tr>
+					<tr>
+						<td><input class="form-control form-control-sm" type="number" min="0" name="jml-supply" id="jml-supply" placeholder="jumlah supply"></td>
+						<td><input class="form-control form-control-sm" type="number" min="0" name="jml-demand" id="jml-demand" placeholder="jumlah demand"></td>
+					</tr>
+					<tr>
+						<td colspan="3"><button type="button" id="init" class="btn btn-success">Buat Tabel NWC</button></td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<div class="hidden1" id="tbl-nwc-container">
+					<h2>Tabel NWC</h2>
+					<table class="table table-striped table-bordered" cellspacing="0" width="100%">
+						<tbody id="tbl-nwc"></tbody>
+						<tfoot>
+							<tr>
+								<td id="buttons">
+									<button type="button" id="next" class="btn btn-primary">Hitung</button> <button type="button" id="stepping-stone" class="hidden1 btn btn-danger">Stepping Stone</button>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
 
-</div>
-	</div>
+			</div>
+		</div>
 	
 		<div class="hidden1 alert alert-success" id="hasil-nwc"></div>
 	
@@ -504,7 +504,10 @@
 					}
 				}
 				txt += ' = '+totalSs;
-				$('#hasil-ss').html(txt).fadeIn(500);
+				var hasil = $('#hasil-ss').clone();
+				hasil.html(txt);
+				$('.container').append(hasil);
+				hasil.fadeIn(500);
 			});
 		});
 	</script>
